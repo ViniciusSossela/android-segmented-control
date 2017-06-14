@@ -27,6 +27,8 @@ public class SegmentedGroup extends RadioGroup {
     private int mMarginDp;
     private Resources resources;
     private int mTintColor;
+    private int mStrokeColor;
+    private int mUnCheckTextColor;
     private int mUnCheckedTintColor;
     private int mCheckedTextColor = Color.WHITE;
     private LayoutSelector mLayoutSelector;
@@ -100,6 +102,16 @@ public class SegmentedGroup extends RadioGroup {
         updateBackground();
     }
 
+    public void setStrokeColor(int stroke) {
+        mStrokeColor = stroke;
+        updateBackground();
+    }
+
+    public void setUnCheckedTextColor(int unCheckedTextColor) {
+        mUnCheckTextColor = unCheckedTextColor;
+        updateBackground();
+    }
+
     public void setTintColor(int tintColor, int checkedTextColor) {
         mTintColor = tintColor;
         mCheckedTextColor = checkedTextColor;
@@ -136,19 +148,21 @@ public class SegmentedGroup extends RadioGroup {
     private void updateBackground(View view) {
         int checked = mLayoutSelector.getSelected();
         int unchecked = mLayoutSelector.getUnselected();
+        int unCheckTextColor = mUnCheckTextColor;
+        int strokeColor = mStrokeColor;
         //Set text color
         ColorStateList colorStateList = new ColorStateList(new int[][]{
                 {-android.R.attr.state_checked},
                 {android.R.attr.state_checked}},
-                new int[]{mTintColor, mCheckedTextColor});
+                new int[]{unCheckTextColor, mCheckedTextColor});
         ((Button) view).setTextColor(colorStateList);
 
         //Redraw with tint color
         Drawable checkedDrawable = resources.getDrawable(checked).mutate();
         Drawable uncheckedDrawable = resources.getDrawable(unchecked).mutate();
         ((GradientDrawable) checkedDrawable).setColor(mTintColor);
-        ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, mTintColor);
-        ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, mTintColor);
+        ((GradientDrawable) checkedDrawable).setStroke(mMarginDp, strokeColor);
+        ((GradientDrawable) uncheckedDrawable).setStroke(mMarginDp, strokeColor);
         ((GradientDrawable) uncheckedDrawable).setColor(mUnCheckedTintColor);
         //Set proper radius
         ((GradientDrawable) checkedDrawable).setCornerRadii(mLayoutSelector.getChildRadii(view));

@@ -26,9 +26,9 @@
                 android:orientation="horizontal"
                 segmentedgroup:sc_border_width="1dp"
                 segmentedgroup:sc_corner_radius="10dp"
-                segmentedgroup:sc_tint_color="#FFEB3B"
-                segmentedgroup:sc_unchecked_tint_color="#ff0000"
-                segmentedgroup:sc_checked_text_color="#7C4DFF">
+                segmentedgroup:sc_tint_color="#569898"
+                segmentedgroup:sc_unchecked_tint_color="@android:color/transparent"
+                segmentedgroup:sc_checked_text_color="#fff">
 
                 <RadioButton
                     android:id="@+id/button21"

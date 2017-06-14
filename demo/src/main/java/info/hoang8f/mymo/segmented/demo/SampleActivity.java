@@ -1,5 +1,6 @@
 package info.hoang8f.mymo.segmented.demo;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -44,8 +45,9 @@ public class SampleActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_sample, container, false);
 
-//            SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
-//            segmented2.setTintColor(Color.DKGRAY);
+            SegmentedGroup segmented2 = (SegmentedGroup) rootView.findViewById(R.id.segmented2);
+            segmented2.setStrokeColor(Color.parseColor("#ececec"));
+            segmented2.setUnCheckedTextColor(Color.parseColor("#ffffff"));
 //
 //            SegmentedGroup segmented3 = (SegmentedGroup) rootView.findViewById(R.id.segmented3);
 //            //Tint color, and text color when checked
